@@ -1,0 +1,93 @@
+{
+  "framework_settings": {
+    "general": {
+      "debug_mode": false,
+      "log_level": "INFO",
+      "log_file": "xsshunterpro.log",
+      "temp_dir": "temp",
+      "output_dir": "output",
+      "max_threads": 10,
+      "timeout": 30,
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+      "proxy": null
+    },
+    "scanning": {
+      "default_depth": 2,
+      "max_depth": 5,
+      "max_urls": 1000,
+      "respect_robots_txt": true,
+      "crawl_same_domain_only": true,
+      "exclude_patterns": [
+        "logout",
+        "delete",
+        "remove",
+        "destroy"
+      ],
+      "include_patterns": [],
+      "scan_forms": true,
+      "scan_headers": true,
+      "scan_cookies": true,
+      "scan_url_parameters": true
+    },
+    "exploitation": {
+      "default_exploit_type": "alert",
+      "callback_server": {
+        "host": "127.0.0.1",
+        "port": 8080,
+        "path": "/callback",
+        "auto_start": true
+      },
+      "screenshot": {
+        "enabled": true,
+        "delay": 1000,
+        "format": "png",
+        "quality": 80
+      }
+    },
+    "payloads": {
+      "use_ml": false,
+      "ml_model": "default",
+      "payloads_dir": "payloads",
+      "custom_payloads_file": "payloads/custom.json"
+    },
+    "reporting": {
+      "default_format": "html",
+      "include_screenshots": true,
+      "include_payloads": true,
+      "include_requests": true,
+      "include_responses": false,
+      "template_dir": "templates",
+      "default_template": "default"
+    },
+    "integrations": {
+      "enabled": true,
+      "tools": {
+        "gospider": {
+          "enabled": true,
+          "path": "gospider",
+          "args": "-s {url} -d {depth} -c 10 -t 5"
+        },
+        "hakrawler": {
+          "enabled": true,
+          "path": "hakrawler",
+          "args": "-url {url} -depth {depth}"
+        },
+        "wfuzz": {
+          "enabled": true,
+          "path": "wfuzz",
+          "args": "-c -z file,{wordlist} {url}"
+        },
+        "subfinder": {
+          "enabled": true,
+          "path": "subfinder",
+          "args": "-d {domain}"
+        },
+        "nuclei": {
+          "enabled": true,
+          "path": "nuclei",
+          "args": "-u {url} -t {templates}"
+        }
+      }
+    }
+  }
+}
