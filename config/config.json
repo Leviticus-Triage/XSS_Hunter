@@ -1,0 +1,36 @@
+{
+  "version": "0.3.0",
+  "callback_server": {
+    "host": "0.0.0.0",
+    "port": 8080,
+    "callbacks_dir": "callbacks",
+    "response_type": "empty"
+  },
+  "exploitation": {
+    "payloads_dir": "payloads",
+    "timeout": 10
+  },
+  "reporting": {
+    "reports_dir": "reports",
+    "templates_dir": "templates",
+    "default_format": "html"
+  },
+  "screenshots": {
+    "screenshots_dir": "screenshots",
+    "format": "png",
+    "quality": 90
+  },
+  "logging": {
+    "logs_dir": "logs",
+    "level": "INFO",
+    "max_size": 10485760,
+    "backup_count": 5
+  },
+  "proxy": {
+    "enabled": false,
+    "http": "",
+    "https": "",
+    "no_proxy": ""
+  },
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+}

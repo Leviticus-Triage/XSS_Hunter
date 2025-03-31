@@ -1,0 +1,20 @@
+2025-03-30 11:37:45,780 - XSSHunterPro.Main - INFO - Alle kritischen Abhängigkeiten erfolgreich importiert.
+2025-03-30 11:37:45,823 - XSSHunterPro.ReportGenerator - WARNING - Markdown konnte nicht importiert werden. Markdown-Berichte werden eingeschränkt sein.
+2025-03-30 11:37:45,920 - XSSHunterPro.Main - ERROR - Fehler beim Importieren der Module: cannot import name 'VulnCategorization' from 'modules.vuln_categorization' (/home/kali/bounty/Hunter/modules/vuln_categorization.py)
+2025-03-30 11:37:45,920 - XSSHunterPro.Main - ERROR - Einige Funktionen werden möglicherweise nicht verfügbar sein.
+2025-03-30 11:37:45,921 - XSSHunterPro.Main - INFO - Konfiguration aus config.json geladen.
+2025-03-30 11:37:45,923 - XSSHunterPro.ErrorHandler - ERROR - Unbekannter Fehler: <lambda>() takes 1 positional argument but 2 were given
+2025-03-30 11:37:45,923 - XSSHunterPro.ErrorHandler - ERROR - Details: {
+  "traceback": "Traceback (most recent call last):\n  File \"/home/kali/bounty/Hunter/error_handler.py\", line 213, in wrapper\n    return func(*args, **kwargs)\n  File \"/home/kali/bounty/Hunter/main.py\", line 446, in run_scan_mode\n    if not utils.is_valid_url(args.url):\n           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^\nTypeError: <lambda>() takes 1 positional argument but 2 were given\n"
+}
+2025-03-30 11:37:45,923 - XSSHunterPro.Main - ERROR - Fehler: Unbekannter Fehler: <lambda>() takes 1 positional argument but 2 were given
+2025-03-30 11:38:56,601 - XSSHunterPro.Main - INFO - Alle kritischen Abhängigkeiten erfolgreich importiert.
+2025-03-30 11:38:56,616 - XSSHunterPro.ReportGenerator - WARNING - Markdown konnte nicht importiert werden. Markdown-Berichte werden eingeschränkt sein.
+2025-03-30 11:38:56,643 - XSSHunterPro.Main - ERROR - Fehler beim Importieren der Module: cannot import name 'VulnCategorization' from 'modules.vuln_categorization' (/home/kali/bounty/Hunter/modules/vuln_categorization.py)
+2025-03-30 11:38:56,643 - XSSHunterPro.Main - ERROR - Einige Funktionen werden möglicherweise nicht verfügbar sein.
+2025-03-30 11:38:56,644 - XSSHunterPro.Main - INFO - Konfiguration aus config.json geladen.
+2025-03-30 11:38:56,645 - XSSHunterPro.ErrorHandler - ERROR - Unbekannter Fehler: <lambda>() takes 1 positional argument but 2 were given
+2025-03-30 11:38:56,645 - XSSHunterPro.ErrorHandler - ERROR - Details: {
+  "traceback": "Traceback (most recent call last):\n  File \"/home/kali/bounty/Hunter/error_handler.py\", line 213, in wrapper\n    return func(*args, **kwargs)\n  File \"/home/kali/bounty/Hunter/main.py\", line 446, in run_scan_mode\n    if not utils.is_valid_url(args.url):\n           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^\nTypeError: <lambda>() takes 1 positional argument but 2 were given\n"
+}
+2025-03-30 11:38:56,645 - XSSHunterPro.Main - ERROR - Fehler: Unbekannter Fehler: <lambda>() takes 1 positional argument but 2 were given

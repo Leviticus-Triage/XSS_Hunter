@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XSS Hunter Pro - Vulnerability Report</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+            --info-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .report-meta {
+            text-align: right;
+            font-size: 14px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        h1 {
+            font-size: 28px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 24px;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            font-size: 20px;
+            margin-top: 25px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .summary-box {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .summary-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stat-card {
+            flex: 1;
+            min-width: 200px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .stat-card.critical {
+            border-top: 4px solid #7d0000;
+        }
+        
+        .stat-card.high {
+            border-top: 4px solid var(--accent-color);
+        }
+        
+        .stat-card.medium {
+            border-top: 4px solid var(--warning-color);
+        }
+        
+        .stat-card.low {
+            border-top: 4px solid var(--info-color);
+        }
+        
+        .stat-card.info {
+            border-top: 4px solid var(--success-color);
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .chart-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .chart {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        
+        .chart img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .vulnerability-list {
+            margin-top: 30px;
+        }
+        
+        .vulnerability-card {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .vulnerability-header {
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+        
+        .vulnerability-header.critical {
+            background-color: #ffebee;
+        }
+        
+        .vulnerability-header.high {
+            background-color: #fff3ef;
+        }
+        
+        .vulnerability-header.medium {
+            background-color: #fff8e1;
+        }
+        
+        .vulnerability-header.low {
+            background-color: #e3f2fd;
+        }
+        
+        .vulnerability-header.info {
+            background-color: #e8f5e9;
+        }
+        
+        .vulnerability-title {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .vulnerability-severity {
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .severity-critical {
+            background-color: #7d0000;
+        }
+        
+        .severity-high {
+            background-color: var(--accent-color);
+        }
+        
+        .severity-medium {
+            background-color: var(--warning-color);
+        }
+        
+        .severity-low {
+            background-color: var(--info-color);
+        }
+        
+        .severity-info {
+            background-color: var(--success-color);
+        }
+        
+        .vulnerability-body {
+            padding: 20px;
+            display: none;
+        }
+        
+        .vulnerability-body.active {
+            display: block;
+        }
+        
+        .detail-row {
+            margin-bottom: 15px;
+        }
+        
+        .detail-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+        
+        .detail-value {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 3px;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+        
+        .screenshot {
+            margin-top: 20px;
+        }
+        
+        .screenshot img {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        
+        .code-block {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 3px;
+            font-family: monospace;
+            overflow-x: auto;
+            margin-bottom: 15px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            margin-top: 50px;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .summary-stats {
+                flex-direction: column;
+            }
+            
+            .stat-card {
+                width: 100%;
+            }
+            
+            .chart {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">XSS Hunter Pro</div>
+            <div class="report-meta">
+                <div>Report generated: {{ timestamp }}</div>
+                <div>Version: {{ version }}</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Vulnerability Scan Report</h1>
+        
+        <div class="summary-box">
+            <h2>Executive Summary</h2>
+            <p>This report presents the findings of a security scan conducted on <strong>{{ data.url }}</strong>. The scan was performed using the XSS Hunter Pro Framework, which is designed to identify Cross-Site Scripting (XSS) vulnerabilities and related security issues.</p>
+            
+            <div class="summary-stats">
+                <div class="stat-card critical">
+                    <div class="stat-label">Critical</div>
+                    <div class="stat-number">{{ data.stats.critical|default(0) }}</div>
+                </div>
+                <div class="stat-card high">
+                    <div class="stat-label">High</div>
+                    <div class="stat-number">{{ data.stats.high|default(0) }}</div>
+                </div>
+                <div class="stat-card medium">
+                    <div class="stat-label">Medium</div>
+                    <div class="stat-number">{{ data.stats.medium|default(0) }}</div>
+                </div>
+                <div class="stat-card low">
+                    <div class="stat-label">Low</div>
+                    <div class="stat-number">{{ data.stats.low|default(0) }}</div>
+                </div>
+                <div class="stat-card info">
+                    <div class="stat-label">Info</div>
+                    <div class="stat-number">{{ data.stats.info|default(0) }}</div>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Scan Details</h2>
+        <table>
+            <tr>
+                <th>Property</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Target URL</td>
+                <td>{{ data.url }}</td>
+            </tr>
+            <tr>
+                <td>Scan Duration</td>
+                <td>{{ data.duration }} seconds</td>
+            </tr>
+            <tr>
+                <td>Scan Depth</td>
+                <td>{{ data.depth|default(2) }}</td>
+            </tr>
+            <tr>
+                <td>Pages Scanned</td>
+                <td>{{ data.pages_scanned|default(0) }}</td>
+            </tr>
+            <tr>
+                <td>Parameters Tested</td>
+                <td>{{ data.parameters_tested|default(0) }}</td>
+            </tr>
+            <tr>
+                <td>Scan Start Time</td>
+                <td>{{ data.start_time|format_date }}</td>
+            </tr>
+            <tr>
+                <td>Scan End Time</td>
+                <td>{{ data.end_time|format_date }}</td>
+            </tr>
+        </table>
+        
+        {% if charts %}
+        <div class="chart-container">
+            {% if charts.severity %}
+            <div class="chart">
+                <h3>Vulnerabilities by Severity</h3>
+                <img src="{{ charts.severity }}" alt="Vulnerabilities by Severity">
+            </div>
+            {% endif %}
+            
+            {% if charts.type %}
+            <div class="chart">
+                <h3>Vulnerabilities by Type</h3>
+                <img src="{{ charts.type }}" alt="Vulnerabilities by Type">
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+        
+        <h2>Identified Vulnerabilities</h2>
+        
+        <div class="vulnerability-list">
+            {% for vuln in data.vulnerabilities %}
+            <div class="vulnerability-card">
+                <div class="vulnerability-header {{ vuln.severity|lower }}">
+                    <div class="vulnerability-title">{{ vuln.type }} in {{ vuln.parameter }}</div>
+                    <div class="vulnerability-severity severity-{{ vuln.severity|lower }}">{{ vuln.severity }}</div>
+                </div>
+                <div class="vulnerability-body">
+                    <div class="detail-row">
+                        <div class="detail-label">URL</div>
+                        <div class="detail-value">{{ vuln.url }}</div>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <div class="detail-label">Parameter</div>
+                        <div class="detail-value">{{ vuln.parameter }}</div>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <div class="detail-label">Description</div>
+                        <div class="detail-value">{{ vuln.description }}</div>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <div class="detail-label">Payload</div>
+                        <div class="detail-value">{{ vuln.payload }}</div>
+                    </div>
+                    
+                    {% if vuln.request %}
+                    <div class="detail-row">
+                        <div class="detail-label">Request</div>
+                        <div class="code-block">{{ vuln.request }}</div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if vuln.response %}
+                    <div class="detail-row">
+                        <div class="detail-label">Response</div>
+                        <div class="code-block">{{ vuln.response }}</div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if vuln.screenshot %}
+                    <div class="screenshot">
+                        <div class="detail-label">Screenshot</div>
+                        <img src="{{ vuln.screenshot }}" alt="Vulnerability Screenshot">
+                    </div>
+                    {% endif %}
+                    
+                    <div class="detail-row">
+                        <div class="detail-label">Remediation</div>
+                        <div class="detail-value">{{ vuln.remediation }}</div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <h2>Recommendations</h2>
+        <div class="summary-box">
+            <p>Based on the findings of this scan, we recommend the following actions to address the identified vulnerabilities:</p>
+            
+            <ol>
+                {% if data.stats.critical > 0 or data.stats.high > 0 %}
+                <li><strong>Immediate Action Required:</strong> Address all Critical and High severity vulnerabilities as soon as possible. These pose significant security risks to your application and users.</li>
+                {% endif %}
+                
+                <li><strong>Input Validation:</strong> Implement proper input validation for all user-supplied data. Validate both the type and format of input data.</li>
+                
+                <li><strong>Output Encoding:</strong> Ensure all dynamic content is properly encoded before being included in HTML, JavaScript, CSS, or URL contexts.</li>
+                
+                <li><strong>Content Security Policy (CSP):</strong> Implement a strong Content Security Policy to provide an additional layer of protection against XSS attacks.</li>
+                
+                <li><strong>Regular Security Testing:</strong> Conduct regular security assessments to identify and address new vulnerabilities that may be introduced during development.</li>
+                
+                <li><strong>Developer Training:</strong> Provide security awareness training for developers to help them understand and prevent common web application vulnerabilities.</li>
+            </ol>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Generated by XSS Hunter Pro Framework v{{ version }} | &copy; 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle vulnerability details
+        document.querySelectorAll('.vulnerability-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const body = header.nextElementSibling;
+                body.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

