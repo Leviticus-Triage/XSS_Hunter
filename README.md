@@ -5,8 +5,12 @@
 Das XSS Hunter Pro Framework ist ein umfassendes Tool zur Erkennung und Ausnutzung von Cross-Site-Scripting (XSS) Schwachstellen in Webanwendungen. 
 Es bietet fortschrittliche Funktionen wie maschinelles Lernen zur Payload-Generierung, WAF-Erkennung und -Umgehung, sowie detaillierte Validierung von gefundenen Schwachstellen.
 
-Status aktuell: under heavy dev --- BETA 
+
+Status aktuell: 
+
+under heavy dev --- BETA 
 Also net rumheulen sondern mitcoden ;)
+
 
 ## Installation
 
