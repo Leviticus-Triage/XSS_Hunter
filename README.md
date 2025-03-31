@@ -37,6 +37,12 @@ selenium>=4.0.0
 pillow>=8.2.0
 ```
 
+### Virtuelle python umgebung erstellen ###
+
+python3 -m [venv-name] 
+source [venv-name]/bin/activate
+
+
 ## Verwendung
 
 Das Framework bietet verschiedene Modi für unterschiedliche Anwendungsfälle:
