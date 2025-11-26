@@ -8,8 +8,7 @@ Es bietet fortschrittliche Funktionen wie maschinelles Lernen zur Payload-Generi
 
 Status aktuell: 
 
-under heavy dev --- BETA 
-Also net rumheulen sondern mitcoden ;)
+Beta
 
 
 ## Installation
