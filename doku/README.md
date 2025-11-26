@@ -17,8 +17,8 @@ Das XSS Hunter Pro Framework ist ein umfassendes Tool für professionelles XSS B
 
 ```bash
 # Klonen des Repositories
-git clone https://github.com/username/xsshunter-pro.git
-cd xsshunter-pro
+git clone https://github.com/Leviticus-Triage/XSS_Hunter.git
+cd XSS_Hunter
 
 # Installation der Abhängigkeiten
 pip install -r requirements.txt
